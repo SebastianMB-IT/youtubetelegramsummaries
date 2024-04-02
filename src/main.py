@@ -24,6 +24,9 @@ def main():
 			videos = scrapetube.get_channel(channel_url=channel,limit=1)
 
 			for video in videos:
+
+				print (int(video['publishedTimeText']['simpleText'].split(' ')[0]))
+				
 				if not 'minutes ago' in video['publishedTimeText']['simpleText'] or int(video['publishedTimeText']['simpleText'].split(' ')[0]) > 60 * 12:
 					print (f"Skipping \"{video['title']['runs'][0]['text']}\" as it is too old: {video['publishedTimeText']['simpleText']}")
 					continue
