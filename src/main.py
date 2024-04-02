@@ -27,7 +27,7 @@ def main():
 
 				print (int(video['publishedTimeText']['simpleText'].split(' ')[0]))
 				
-				if not 'minutes ago' in video['publishedTimeText']['simpleText'] or int(video['publishedTimeText']['simpleText'].split(' ')[0]) > 60 * 12:
+				if not 'minutes ago' in video['publishedTimeText']['simpleText'] or int(video['publishedTimeText']['simpleText'].split(' ')[0]) > 60:
 					print (f"Skipping \"{video['title']['runs'][0]['text']}\" as it is too old: {video['publishedTimeText']['simpleText']}")
 					continue
 				process_video(f"https://www.youtube.com/watch?v={video['videoId']}")
