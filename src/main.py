@@ -9,6 +9,17 @@ def process_video(url):
 	summary = get_summary(video.watch_url)
 	telegram_alert.send_alert(f'New video: {video.title}\n{video.watch_url}\n{summary}')
 
+def process_video(url):
+    video = YouTube(url)
+    summary = get_summary(video.watch_url)
+
+    if os.environ.get('NO_WATCH_URL') == 'true':
+        alert_message = f'New video: {video.title}\n{summary}'
+    else:
+        alert_message = f'New video: {video.title}\n{video.watch_url}\n{summary}'
+
+    telegram_alert.send_alert(alert_message)
+
 def main():
 	# load video from argv if available
 	if len(sys.argv) > 1:
