@@ -5,15 +5,11 @@ import os, sys
 from ytsummary import get_summary
 
 def process_video(url):
-	video = YouTube(url)
-	summary = get_summary(video.watch_url)
-	telegram_alert.send_alert(f'New video: {video.title}\n{video.watch_url}\n{summary}')
-
-def process_video(url):
     video = YouTube(url)
     summary = get_summary(video.watch_url)
+    no_watch_url = os.environ.get('NO_WATCH_URL')
 
-    if os.environ.get('NO_WATCH_URL') == 'true':
+    if no_watch_url == 'true':
         alert_message = f'New video: {video.title}\n{summary}'
     else:
         alert_message = f'New video: {video.title}\n{video.watch_url}\n{summary}'
