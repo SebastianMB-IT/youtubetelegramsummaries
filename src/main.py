@@ -7,7 +7,7 @@ from ytsummary import get_summary
 def process_video(url):
     video = YouTube(url)
     summary = get_summary(video.watch_url)
-    no_watch_url = os.environ.get('NO_WATCH_URL')
+    no_watch_url = os.environ.get('NO_WATCH_URL').lower()
 
     if no_watch_url == 'true':
         alert_message = f'New video: {video.title}\n{summary}'
