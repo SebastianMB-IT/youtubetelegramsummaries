@@ -18,4 +18,4 @@ jobs:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         CHANNEL_LIST: ${{ vars.CHANNEL_LIST }}
         NO_WATCH_URL: ${{ vars.NO_WATCH_URL }}
-      run: docker run -e TELEGRAM_CHAT_ID -e TELEGRAM_BOT_TOKEN -e OPENAI_API_KEY -e CHANNEL_LIST stell0/youtubetelegramsummaries:latest
+      run: docker run -e TELEGRAM_CHAT_ID -e TELEGRAM_BOT_TOKEN -e OPENAI_API_KEY -e CHANNEL_LIST -e NO_WATCH_URL stell0/youtubetelegramsummaries:latest
